@@ -16,11 +16,11 @@ allData <- allData[allData$Date <= as.Date("2007-02-02"),]
 allData$Time <- paste(allData$Datebackup, allData$Timebackup)
 allData$Time <- strptime(allData$Time, "%d/%m/%Y %H:%M:%S")
 
-#now plot 1
+#now plot 3
 with(allData, plot(Time, Sub_metering_1, type="n", ylab="Energy Submetering", xlab=""))
 with(allData, lines(Time, Sub_metering_1))
 with(allData, lines(Time, Sub_metering_2, col="red"))
 with(allData, lines(Time, Sub_metering_3, col="blue"))
 legend("topright", pch="______", col=c("black", "red", "blue"), legend=c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"))
-
+dev.copy(png, file="plot3.png", width=480, height=480)
 

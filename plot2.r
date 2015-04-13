@@ -16,4 +16,7 @@ allData <- allData[allData$Date <= as.Date("2007-02-02"),]
 allData$Time <- paste(allData$Datebackup, allData$Timebackup)
 allData$Time <- strptime(allData$Time, "%d/%m/%Y %H:%M:%S")
 
-#now plot 2d
+#now plot 2
+with(allData, plot(Time, Global_active_power, type="n", xlab="", ylab="Global Active Power (kilowatts)"))
+with(allData, lines(Time, Global_active_power))
+dev.copy(png, file="plot2.png", width=480, height=480)
